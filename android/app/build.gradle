@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
+        multiDexEnabled true
         applicationId "io.ionic.trainingdecks"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
@@ -30,6 +31,20 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.android.support:multidex:1.0.3'
+
+    // Branch: required for all Android apps
+    implementation 'io.branch.sdk.android:library:5.0.3'
+
+    // Branch: required if your app is in the Google Play Store (tip: avoid using bundled play services libs)
+    implementation 'com.google.firebase:firebase-appindexing:19.1.0' // App indexing
+    implementation 'com.google.android.gms:play-services-ads:19.4.0' // GAID matching
+
+    // Branch: optional
+    implementation 'androidx.browser:browser:1.2.0' // Chrome Tab matching (enables 100% guaranteed matching based on cookies)
+    // Replace above with the line below if you do not support androidx
+    // implementation 'com.android.support:customtabs:28.0.0'
+
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
     implementation project(':capacitor-android')
