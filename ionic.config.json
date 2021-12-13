@@ -1,0 +1,7 @@
+{
+  "name": "demo-branch-io",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
